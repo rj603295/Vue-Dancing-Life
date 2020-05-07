@@ -9,7 +9,7 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: '/Vue-Dancing-Life/dist/',
     proxyTable: {},
 
     // Various Dev Server settings
