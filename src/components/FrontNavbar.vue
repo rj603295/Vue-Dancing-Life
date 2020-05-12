@@ -1,9 +1,10 @@
 <template>
     <div>
          <loading :active.sync="isLoading"></loading>
-        <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-dark">
+         <div class="sticky-top">
+             <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-dark">
             <div class="container-fluid">
-                <router-link class="text-decoration-none" to="/dance_studio"><h1 class="h2" style="color: white;">Dancing Life</h1></router-link>
+                <router-link class="text-decoration-none" to="/"><h1 class="h2" style="color: white;">Dancing Life</h1></router-link>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -37,44 +38,16 @@
                                 <a class="nav-link text-white" href="#" @click.prevent="typeBtn('JACKET'); visibility='JACKET'">JACKET</a>
                             </li>
                         </ul>
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <div class="dropdown ml-auto">
-                                    <button class="btn btn-sm btn-cart" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-shopping-cart text-white fa-2x"></i>
-                                        <span class="badge badge-pill badge-danger">{{count}}</span>
-                                    </button>
-                                        <div class="dropdown-menu dropdown-menu-right" style="min-width: 400px">
-                                            <div class="px-4 py-3">
-                                            <h6 class="mb-2">已選擇商品</h6>
-                                            <table class="table table-sm">
-                                                <tbody>
-                                                <tr v-for="item in cart.carts" :key="item.product.product_id">
-                                                    <td class="align-middle text-center">
-                                                    <a href="#removeModal" class="text-mnuted"></a>
-                                                    </td>
-                                                    <td class="align-middle">
-                                                    <a href="#" class="text-secondary" data-toggle="modal" data-target="#removeModal" @click="removeCartItem(item.id)"><i class="fas fa-trash"></i></a>
-                                                    {{ item.product.title }}
-                                                    </td>
-                                                    <td>{{item.qty}}{{item.product.unit}}</td>
-                                                    <td>{{item.total}}元</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <router-link to="/check" class="btn btn-primary btn-block">結帳去</router-link>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </li>
-                        </ul>
                     </div>
             </div>
         </nav>
+         </div>
+        
     </div>
 </template>
 <script>
 export default {
+   
       data(){
         return {
             products: [],
@@ -101,35 +74,10 @@ export default {
     },
     methods:{
          typeBtn(visibility){
-            this.$router.push({ path: '/shopping', query: { type: visibility } });
+            this.$router.push({ path: '/set/shopping', query: { type: visibility } });
             console.log(this.$route.params.type)
         },
-        getCart(){
-            const vm = this;
-            const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`
-            vm.isLoading = true;
-            this.$http.get(url).then((response) => {
-                vm.cart = response.data.data;
-                vm.count = response.data.data.carts.length;
-                console.log(response);
-                vm.isLoading = false;
-            })
-        },
-        removeCartItem(id){
-            const vm = this;
-            const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`
-            vm.isLoading = true;
-            this.$http.delete(url).then((response) => {
-                vm.getCart();
-                console.log(response);
-                vm.isLoading = false;
-            })
-        },
-    
-
-    },
-    created(){
-        this.getCart();
+        
     },
 }
 </script>

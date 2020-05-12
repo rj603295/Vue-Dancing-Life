@@ -10,13 +10,14 @@ import CustomerList from '@/components/pages/CustomerList';
 import Home from '@/components/Home';
 import ProductDetail from '@/components/pages/ProductDetail';
 import Check from '@/components/pages/Check';
+import Setting from '@/components/Setting';
 Vue.use(VueRouter);
 
 export default new VueRouter({
     routes: [
         {
             path: '*',
-            redirect: 'dancing_life'
+            redirect: '/'
         },
         // {
         //     path: '/',
@@ -60,49 +61,47 @@ export default new VueRouter({
             ]
         },
         {
-            path: '/dashboard',
-            name: 'Dashboard',
-            component: Dashboard,
-            children: [
-
-            ]
-        },
-        {
             path: '/',
             name: 'Home',
             component: Home,
         },
-
         {
-            path: '/dancing_life',
-            name: 'Home',
-            component: Home,
-            children: []
-        },
-        {
-            path: '/shopping',
-            name: 'CustomerOrder',
-            component: CustomerOrder,
+            path: '/set',
+            name: 'Setting',
+            component: Setting,
             children: [
-                  
+
+                
+                {
+                    path: 'shopping',
+                    name: 'CustomerOrder',
+                    component: CustomerOrder,
+                },
+                {
+                    path: 'shopping/:id',
+                    name: 'ProductDetail',
+                    component: ProductDetail,
+                },
+                {
+                    path: 'check',
+                    name: 'Check',
+                    component: Check,
+                    
+                },
+                
+
+
+                
             ]
         },
-        {
-            path: '/shopping/:id',
-            name: 'ProductDetail',
-            component: ProductDetail,
-        },
-        {
-            path: 'check/:orderId',
-            name: 'Check',
-            component: Check,
+
+
+        // {
+        //     path: 'check/:orderId',
+        //     name: 'Check',
+        //     component: Check,
             
-        },
-        {
-            path: '/check',
-            name: 'Check',
-            component: Check,
-            
-        },
+        // },
+
     ],
 });

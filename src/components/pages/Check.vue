@@ -1,96 +1,28 @@
 <template>
-    <div>
-        <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-dark">
-            <div class="container-fluid">
-                <router-link class="text-decoration-none" to="/dance_studio"><h1 class="h2" style="color: white;">Dancing Life</h1></router-link>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                         <ul class="navbar-nav mr-auto py-1 list-group ml-3">
-                             <li class="nav-item active">
-                                <a class="nav-link text-white" href="#" @click.prevent="typeBtn('ALL'); visibility='all'">ALL</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="#" @click.prevent="typeBtn('TEE'); visibility='TEE'">T-SHIRT</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="#"  @click.prevent="typeBtn('PANTS'); visibility='PANTS'">PANTS</a>
-                            </li>
-                            
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                               ACCESSORIES
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#" @click.prevent="typeBtn('ACCESSORIES'); visibility='ACCESSORIES'">ALL</a>
-                                <a class="dropdown-item" href="#" @click.prevent="typeBtn('NECKLACE'); visibility='NECKLACE'">NECKLACE</a>
-                                <a class="dropdown-item" href="#" @click.prevent="typeBtn('BRACELET'); visibility='BRACELET'">BRACELET</a>
-                                <a class="dropdown-item" href="#" @click.prevent="typeBtn('HAT'); visibility='HAT'">HAT</a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="#" @click.prevent="typeBtn('SHOES'); visibility='SHOES'">SHOES</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="#" @click.prevent="typeBtn('JACKET'); visibility='JACKET'">JACKET</a>
-                            </li>
-                        </ul>
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <div class="dropdown ml-auto">
-                                    <button class="btn btn-sm btn-cart" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-shopping-cart text-white fa-2x"></i>
-                                        <span class="badge badge-pill badge-danger">{{ count }}</span>
-                                    </button>
-                                        <div class="dropdown-menu dropdown-menu-right" style="min-width: 400px">
-                                            <div class="px-4 py-3">
-                                            <h6 class="mb-2">已選擇商品</h6>
-                                            <table class="table table-sm">
-                                                <tbody>
-                                                <tr v-for="item in cart.carts" :key="item.product.product_id">
-                                                    <td class="align-middle text-center">
-                                                    <a href="#removeModal" class="text-mnuted"></a>
-                                                    </td>
-                                                    <td class="align-middle">
-                                                    <a href="#" class="text-secondary" data-toggle="modal" data-target="#removeModal" @click="removeCartItem(item.id)"><i class="fas fa-trash"></i></a>
-                                                    {{ item.product.title }}
-                                                    </td>
-                                                    <td>{{item.qty}}{{item.product.unit}}</td>
-                                                    <td>{{item.total}}元</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <router-link to="/check" class="btn btn-primary btn-block">結帳去</router-link>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </li>
-                        </ul>
-                    </div>
-            </div>
-        </nav>
+    <div style="font-family: '微軟正黑體';">
+        <loading :active.sync="isLoading"></loading>
         <div class="container">
             <!-- step1 -->
             <div class="form-row mt-5">
                 <div class="col-12 col-sm">
-                    <div class="alert alert-rounded" role="alert" :class="{'alert-success': step == 1, 'alert-dark': step != 1}">
-                        1. 確認購物清單
+                    <div class="alert alert-rounded" role="alert" style="font-weight: bold;" :class="{'alert-success border border-success p-4': step == 1, 'alert-dark': step != 1}">
+                        step1. 確認購物清單
                     </div>
                 </div>
                 <div class="col-12 col-sm">
-                    <div class="alert alert-rounded" role="alert" :class="{'alert-success': step == 2, 'alert-dark': step != 2}">
-                        2. 填寫購買資料
+                    <div class="alert alert-rounded" role="alert" style="font-weight: bold;" :class="{'alert-success border border-success p-4': step == 2, 'alert-dark': step != 2}">
+                        step2. 填寫購買資料
                     </div>
                 </div>
                 <div class="col-12 col-sm">
-                    <div class="alert alert-rounded" role="alert" :class="{'alert-success': step == 3, 'alert-dark': step != 3}">
-                        3. 付款去
+                    <div class="alert alert-rounded" role="alert" style="font-weight: bold;" :class="{'alert-success border border-success p-4': step == 3, 'alert-dark': step != 3}">
+                        step3. 付款去
                     </div>
                 </div>
             </div>
             <div v-if="step == 1">
-                <table class="table">
+                <div class="table-responsive">
+                    <table class="table">
                     <thead>
                         <th width="20%"></th>
                         <th width="20%"></th>
@@ -131,19 +63,21 @@
                         <td class="text-right text-success">{{ cart.final_total }}</td>
                         </tr>
                     </tfoot>
-                </table>
+                    </table>
+                </div>
+                
 
                 <div class="input-group mb-3 input-group-sm">
                     <input type="text" class="form-control" placeholder="請輸入優惠碼" v-model="coupon_code">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" @click="addCouponCode">
+                        <button class="btn btn-outline-success" type="button" @click="addCouponCode">
                         套用優惠碼
                         </button>
                     </div>
                 </div>
             </div>
             <!-- step2 -->
-            <div class="my-5 row justify-content-center w-100 h-100" v-if="step == 2">
+            <div class="my-5 row w-100 h-100" v-if="step == 2">
                 <form class="col-md-12" @submit.prevent="createOrder">
                     <div class="form-group">
                         <label for="useremail">Email</label>
@@ -179,10 +113,10 @@
 
                     <div class="d-flex">
                         <div>
-                            <button type="button" class="btn btn-secondary" v-if="step == 2||step == 3" @click="step = step-1"><i class="fas fa-arrow-left"></i>上一步</button>
+                            <button type="button" class="btn btn-border" v-if="step == 2||step == 3" @click="step = step-1"><i class="fas fa-arrow-left"></i>上一步</button>
                         </div>
                         <div class="ml-auto">
-                            <button class="btn btn-danger text-right">送出訂單</button>
+                            <button class="btn btn-color text-right">送出訂單<i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
                     
@@ -191,6 +125,7 @@
             <!-- step3 -->
                 <div class="my-5 row justify-content-center" v-if="step == 3">
                     <form class="col-md-9" @submit.prevent="payOrder" >
+                        
                         <table class="table">
                         <thead>
                             <th>品名</th>
@@ -240,7 +175,7 @@
                         </tbody>
                         </table>
                         <div class="d-flex">
-                            <button type="button" class="btn btn-secondary" v-if="step == 3" @click="step = step-1"><i class="fas fa-arrow-left"></i>上一步</button>
+                            <button type="button" class="btn btn-color" v-if="step == 3" @click="step = step-1"><i class="fas fa-arrow-left"></i>上一步</button>
                             <button type="button" class="btn btn-danger ml-auto" v-if="step==3 && order.is_paid === false" @click="payOrder">付款去</button>
                         </div>
                         
@@ -250,16 +185,16 @@
                 <!-- step4 完成 -->
                 <div v-if="step == 4" class="d-flex justify-content-center align-items-center p-5">
                     <i class="fas fa-check-circle fa-4x" style="color: green"></i>
-                    <p class="h1">付款完成，已經收到您的訂單!</p>
+                    <p class="h1 responsive">付款完成，已經收到您的訂單!</p>
                 </div>
 
 
             
             <div class="mb-5">
                 <div class="d-flex">
-                    <router-link class="btn btn-outline-secondary" to="/shopping?type=ALL" role="button" v-if="step == 1">繼續購物</router-link>
+                    <a class="btn btn-border" href="#/set/shopping?type=ALL" role="button" v-if="step == 1">繼續購物</a>
                     <div class="ml-auto">
-                        <button type="button" class="btn btn-secondary" @click="alert" v-if="step==1">下一步<i class="fas fa-arrow-right"></i></button>
+                        <button type="button" class="btn btn-color" @click="alert" v-if="step==1">下一步<i class="fas fa-arrow-right"></i></button>
                     </div>
                 </div>
                
@@ -269,8 +204,6 @@
 
 
         </div>
-        
-        <Footer></Footer>
     </div>
 </template>
 <script>
@@ -321,6 +254,7 @@ export default {
                 console.log(response);
                 vm.isLoading = false;
             })
+
         },
          getCart(){
             const vm = this;
@@ -401,10 +335,10 @@ export default {
                 vm.isLoading = false;
             });
         },
-        typeBtn(visibility){
-            this.$router.push({ path: '/shopping', query: { type: visibility } });
-            console.log(this.$route.params.type)
-        },
+        // typeBtn(visibility){
+        //     this.$router.push({ path: '/shopping', query: { type: visibility } });
+        //     console.log(this.$route.params.type)
+        // },
 
     },
     created(){
@@ -412,3 +346,37 @@ export default {
     }
 }
 </script>
+<style lang="scss">
+    .responsive{
+        font-size: 1.4rem;
+        font-family: "微軟正黑體";
+    }
+    .btn-cart{
+        background: transparent;
+        position: relative;
+    }
+    .btn-cart .badge{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+        .btn-border{
+        border: 2px #bda579 solid;
+        color: #bda579;
+    }
+    .btn-border:hover{
+        border: 2px #bda579 solid;
+        background: #bda579;
+        color: white;
+    }
+        .btn-color{
+        background: #bda579;
+        color: white;
+        // #a18e76
+    }
+    .btn-color:hover{
+        background: #97825b;
+        color: white;
+
+        }
+</style>

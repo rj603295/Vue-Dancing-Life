@@ -1,7 +1,6 @@
 <template>
-    <div>
+    <div style="font-family: '微軟正黑體';">
         <loading :active.sync="isLoading"></loading>
-        <FrontNavbar></FrontNavbar>
          <div class="container-fluid">
             <div class="row mt-4">
             <div class="col-md-3 mb-4" v-for="item in filterProducts" :key="item.id">
@@ -27,10 +26,7 @@
             </div>
             </div>
         </div>
-
-        
-        <Footer></Footer>
-
+        <Cart :my-cart="cart" @delCart="removeCartItem" v-if="cart.carts"></Cart>
 
     </div>
 </template>
@@ -39,11 +35,13 @@
 import $ from 'jquery';
 import Footer from '../Footer';
 import FrontNavbar from '../FrontNavbar';
+import Cart from '../Cart';
 
 export default {
      components:{
        Footer,
        FrontNavbar,
+       Cart,
     },
     data(){
         return {
@@ -92,21 +90,6 @@ export default {
                 console.log(response);
                 vm.status.loadingItem = '';
                 vm.$router.push(`shopping/${response.data.product.id}`);
-            })
-        },
-        addtoCart(id, qty = 1){
-            const vm = this;
-            const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`
-            vm.status.loadingItem = id;
-            const cart = {
-                product_id: id,
-                qty
-            }
-            this.$http.post(url, {data: cart}).then((response) => {
-                console.log(response);
-                vm.status.loadingItem = '';
-                vm.getCart();
-                $('#productModal').modal('hide');
             })
         },
         getCart(){
@@ -161,10 +144,6 @@ export default {
             }
             });
             
-        },
-        typeBtn(visibility){
-            this.$router.push({ path: '/shopping', query: { type: visibility } });
-            console.log(this.$route.params.type)
         },
         
     },
@@ -246,7 +225,7 @@ export default {
   }
     return [];
  }
-    }
+    },
 }
 </script>
 
