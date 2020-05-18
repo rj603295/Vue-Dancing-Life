@@ -5,7 +5,9 @@
                             <div class="container-fluid">
                                 <a class="text-decoration-none" href="#/dist"><h1 class="h2" style="color: white;">Dancing Life</h1></a>
                                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                                        <span class="navbar-toggler-icon"></span>
+                                        <span class="navbar-toggler-icon">
+                                            <i class="fas fa-bars" style="color:#fff; font-size:28px;"></i>
+                                        </span>
                                     </button>
                                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                                         <ul class="navbar-nav mr-auto">
