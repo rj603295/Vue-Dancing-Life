@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div style="font-family:'微軟正黑體'">
     <loading :active.sync="isLoading"></loading>
-      <h1 class="text-center mt-5">Dancing Life<br>後台管理</h1>
+      <h1 class="text-center pt-5">Dancing Life<br>後台管理</h1>
         <form class="form-signin" @submit.prevent="signin" @keyup.enter="signin">
           <label for="inputEmail" class="sr-only">Email address</label>
           <input type="email" id="inputEmail" class="form-control" placeholder="Email address" v-model="user.username" required autofocus>
@@ -12,9 +12,10 @@
               <input type="checkbox" value="remember-me"> Remember me
             </label>
           </div>
-          <button class="btn btn-lg btn-block btn-secondary" type="submit">登入</button>
+          <button class="btn btn-lg btn-block btn-color" type="submit">登入</button>
           <p class="mt-5 mb-3 text-muted">&copy; Jess Chiu</p>
         </form>
+      
     
   </div>
 </template>
@@ -98,6 +99,14 @@ h1{
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+.btn-color{
+background: #bda579;
+color: white;
+}
+.btn-color:hover{
+    background: #97825b;
+    color: white;
 }
 </style>
 

@@ -2,8 +2,6 @@
     <div>
       <loading :active.sync="isLoading"></loading>
         
-        <!-- <label><input type="checkbox" v-model="fullPage">Full page?</label>
-        <button @click.prevent="doAjax">fetch Data</button> -->
 
         <div class="text-right mt-4">
             <button class="btn btn-primary" @click="openModal(true)">建立新的產品</button>
@@ -27,9 +25,9 @@
                     <td class="text-right">
                         {{ item.price | currency}}
                     </td>
-                    <td>
-                        <span class="text-success" v-if="item.is_enabled">啟用</span>
-                        <span v-else>未啟用</span>
+                    <td class="text-center">
+                        <span class="text-success" v-if="item.is_enalbed">啟用</span>
+                        <span v-else class="text-danger">未啟用</span>
                     </td>
                     <td>
                         <button class="btn btn-outline-primary btn-sm" @click="openModal(false, item)">編輯</button>
@@ -41,24 +39,6 @@
         </table>
 
         <pagination :pages="pagination" @diffPage="getProducts"></pagination>
-
-
-        <!-- <nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item" :class="{'disabled': !pagination.has_pre}">
-      <a class="page-link" href="#" @click.prevent="getProducts(pagination.current_page-1)" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item" v-for="page in pagination.total_pages" :key="page" :class="{'active': pagination.current_page === page}"><a class="page-link" href="#" @click.prevent="getProducts(page)">{{ page }}</a></li>
-    
-    <li class="page-item" :class="{'disabled': !pagination.has_next}">
-      <a class="page-link" href="#" @click.prevent="getProducts(pagination.current_page+1)" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav> -->
 
         <!-- modal -->
             <div class="modal fade" id="productModal" tabindex="-1" role="dialog"

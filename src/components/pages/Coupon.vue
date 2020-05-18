@@ -53,7 +53,7 @@
             </div>
              <div class="form-group">
                 <label for="exampleFormControlInput1">折扣百分比</label>
-                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="80" v-model="tempCoupon.percent">
+                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="請輸入折扣百分比" v-model="tempCoupon.percent">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">優惠碼</label>
@@ -90,14 +90,14 @@
     <div class="modal-content border-0">
       <div class="modal-header bg-danger text-white">
         <h5 class="modal-title" id="exampleModalLabel">
-          <span>刪除產品</span>
+          <span>刪除優惠券</span>
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        是否刪除 <strong class="text-danger">{{ tempCoupon.title }}</strong> 商品(刪除後將無法恢復)。
+        是否刪除 <strong class="text-danger">{{ tempCoupon.title }}</strong> 優惠券(刪除後將無法恢復)。
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">取消</button>
@@ -119,14 +119,7 @@ export default {
     components:{
           Pagination,
         },
-    watch:{
-      due_date(){
-        const vm = this;
-        const timestamp = Math.floor(new Date(vm.due_date) / 1000);
-        vm.tempCoupon.due_date = timestamp;
-      },
-      
-    },
+    
     data(){
         return {
             coupons: [],
@@ -148,6 +141,7 @@ export default {
                     vm.isLoading = false;
                     vm.coupons = response.data.coupons;
                     vm.pagination = response.data.pagination;
+                    
                 });
         },
         openModal(isNew, item){
@@ -209,7 +203,7 @@ export default {
         },
     },
     created(){
-        this.getCoupons();
-    }
+        this.getCoupons();      
+    },
 }
 </script>

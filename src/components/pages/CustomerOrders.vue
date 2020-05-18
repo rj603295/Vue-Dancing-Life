@@ -5,17 +5,17 @@
             <div class="row mt-4">
             <div class="col-md-3 mb-4" v-for="item in filterProducts" :key="item.id">
             <div class="card border-0"  @click="getProduct(item.id)">
-                <div class="p-4" style="height: 400px; background-size: cover; background-position: center"
+                <!-- <div class="p-4" style="height: 400px; background-size: cover; background-position: center"
                 :style="{backgroundImage: `url(${item.imageUrl})`}">
-                </div>
+                </div> -->
+                <img :src="item.imageUrl" alt="" class="img-fluid" style="height: 350px; width: 350px;">
                 <div class="card-body border-0">
-                <!-- <span class="badge badge-secondary float-right ml-2">{{ item.category }}</span> -->
+               
                     <h5 class="card-title text-center">
                         <a href="#" class="text-dark">{{ item.title }}</a>
                     </h5>
                     <p class="card-text">{{ item.content }}</p>
-                <div class=""> <!--justify-content-between align-items-baseline -->
-                    <!-- <div class="h5">2,800 元</div> -->
+                <div class=""> 
                     <del class="h6">{{ item.orgin_price }}</del>
                     <p class="h5 text-center">{{ '$'+item.price }}</p>
                 </div>
@@ -52,16 +52,6 @@ export default {
                 loadingItem: '',
             },
             cart: [],
-            coupon_code: '',
-            form: {
-                user:{
-                    name: '',
-                    tel: '',
-                    email: '',
-                    address: '',
-                },
-                message:'',
-            },
             pagination: [],
         };
     },
@@ -76,7 +66,7 @@ export default {
                 this.$http.get(api).then((response) => {
                     console.log(response.data);
                     vm.isLoading = false;
-                    vm.products = response.data.products;
+                      vm.products = response.data.products;
                     vm.pagination = response.data.pagination;
                 });
         },
@@ -112,39 +102,7 @@ export default {
                 vm.isLoading = false;
             })
         },
-        addCouponCode(){
-            const vm = this;
-            const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/coupon`
-            const coupon = {
-                code: vm.coupon_code
-            };
-            vm.isLoading = true;
-            this.$http.post(url, {data: coupon}).then((response) => {
-                vm.getCart();
-                console.log(response);
-                vm.isLoading = false;
-            })
-        },
-        createOrder(){
-            const vm = this;
-            const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/order`
-            const order = vm.form;
-            // vm.isLoading = true;
-            this.$validator.validate().then((result)=>{
-                if(result){
-                    this.$http.post(url, {data: order}).then((response) => {
-                    console.log('訂單已建立', response);
-                    if(response.data.success){
-                    vm.$router.push(`/customer_checkout/${response.data.orderId}`);
-                }
-                // vm.isLoading = false;
-            });
-            }else{
-                console.log('欄位不完整');
-            }
-            });
-            
-        },
+  
         
     },
         created(){
@@ -156,11 +114,20 @@ export default {
 
     computed: {
         filterProducts: function(){
-      if(this.$route.query.type == 'ALL'||this.$route.query.type == undefined){
-         return this.products;
+
+          var enabledProducts = [];
+          this.products.forEach(function(item){
+          if(item.is_enalbed == 1){
+            enabledProducts.push(item);
+          }
+        })
+
+          if(this.$route.query.type == 'ALL'||this.$route.query.type == undefined){
+        //  return this.products;
+            return enabledProducts;
         }else if(this.$route.query.type == 'TEE'){
         var newProducts = [];
-        this.products.forEach(function(item){
+        enabledProducts.forEach(function(item){
           if(item.category == 'TEE'){
             newProducts.push(item);
           }
@@ -168,7 +135,7 @@ export default {
         return newProducts;
         }else if(this.$route.query.type == 'PANTS'){
         var newProducts = [];
-        this.products.forEach(function(item){
+        enabledProducts.forEach(function(item){
           if(item.category == 'PANTS'){
             newProducts.push(item);
           }
@@ -176,7 +143,7 @@ export default {
       return newProducts;
         }else if(this.$route.query.type == 'SHOES'){
         var newProducts = [];
-        this.products.forEach(function(item){
+        enabledProducts.forEach(function(item){
           if(item.category == 'SHOES'){
             newProducts.push(item);
           }
@@ -184,39 +151,31 @@ export default {
       return newProducts;
         }else if(this.$route.query.type == 'HAT'){
         var newProducts = [];
-        this.products.forEach(function(item){
+        enabledProducts.forEach(function(item){
           if(item.category == 'HAT'){
             newProducts.push(item);
           }
         })
       return newProducts;
-        }else if(this.$route.query.type == 'BRACELET'){
+        }else if(this.$route.query.type == 'OTHERS'){
         var newProducts = [];
-        this.products.forEach(function(item){
-          if(item.category == 'BRACELET'){
+        enabledProducts.forEach(function(item){
+          if(item.category == 'OTHERS'){
             newProducts.push(item);
           }
         })
       return newProducts;
-         }else if(this.$route.query.type == 'NECKLACE'){
+         }else if(this.$route.query.type == 'ACCESSORIES'){
         var newProducts = [];
-        this.products.forEach(function(item){
-          if(item.category == 'NECKLACE'){
-            newProducts.push(item);
-          }
-        })
-      return newProducts;
-        }else if(this.$route.query.type == 'ACCESSORIES'){
-        var newProducts = [];
-        this.products.forEach(function(item){
-          if(item.category == 'NECKLACE'||item.category == 'HAT'||item.category == 'BRACELET'){
+        enabledProducts.forEach(function(item){
+          if(item.category == 'HAT'||item.category == 'OTHERS'){
             newProducts.push(item);
           }
         })
       return newProducts;
         }else if(this.$route.query.type == 'JACKET'){
         var newProducts = [];
-        this.products.forEach(function(item){
+        enabledProducts.forEach(function(item){
           if(item.category == 'JACKET'){
             newProducts.push(item);
           }
@@ -224,12 +183,13 @@ export default {
       return newProducts;
   }
     return [];
- }
-    },
+      
+    }
+  },
 }
 </script>
 
-<style lang="scss">
+<style scoped>
     .card{
         cursor: pointer;
     }

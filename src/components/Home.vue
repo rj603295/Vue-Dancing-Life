@@ -1,29 +1,31 @@
 <template>
     <div style="font-family: '微軟正黑體';">
         
-        <div class="header" :style="{height: height+'px'}">
-            <div class="position">
-                <div class="video-container">
+        <div class="header position-relative" :style="{height: height+'px'}">
+
+                <div class="video-container m-0">
                     <video autoplay loop muted id="full-video" poster="https://images.unsplash.com/photo-1551186839-9e4a19b27812?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80">
                         <source src="../assets/hiphop.mp4" type="video/mp4">
                     </video>
-                    <h2 class="p-overlay">做你自己</h2>
                 </div>
-
+                <h2 class="p-overlay m-0">做你自己</h2>
                 <div class="navbar-overlay text-bold">
-                        <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+                        <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
                             <div class="container-fluid">
-                                <a class="text-decoration-none" href="#"><h1 class="h2" style="color: white;">Dancing Life</h1></a>
+                                <a class="text-decoration-none" href="#/dist"><h1 class="h2" style="color: white;">Dancing Life</h1></a>
                                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                                         <span class="navbar-toggler-icon"></span>
                                     </button>
                                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                                         <ul class="navbar-nav mr-auto">
-                                        <li class="nav-item active">
-                                            <a href="#" class="nav-link text-white">首頁 <span class="sr-only">(current)</span></a>
+                                        <li class="nav-item">
+                                            <a href="#/dist" class="nav-link text-white">首頁 <span class="sr-only">(current)</span></a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="#/set/shopping" class="nav-link text-white">購物商城</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#/get_coupon" class="nav-link text-white">優惠券</a>
                                         </li>
                                         </ul>
                                     </div>
@@ -31,9 +33,6 @@
                         </nav>
                 </div>
 
-            
-            
-            </div>
         </div>
 
 
@@ -111,7 +110,6 @@ export default {
     data(){
         return{
             height: '',
-            isTrue: true,
         }
     },
     
@@ -130,17 +128,7 @@ export default {
             }
 
         },
-        changeActive(e){
-             if(e.target.nodeName !=='DIV'){
-                 return;
-            }else{
-                this.isTrue = false;
-            }
-
-        },
-        removeActive(e){
-            this.isTrue = true;
-        },
+       
         to(type){
             const vm = this;
             vm.$router.push(`/set/shopping?type=${type}`);
@@ -154,7 +142,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped>
     .logo{
         width: 200px;
         height: auto;
@@ -165,27 +153,15 @@ export default {
         }
     .box{
       		background-color: white;
-      		height: 500px;
+      		height: 525px;
     	}
-    .box2{
-        background-color: white;
-      		height: 300px;
-    }
     .header{
         width: 100%;
-        // min-height: auto;
     }
-    .position{
-        position: relative;
-        width: 100%;
-        margin: 0;
-        padding:0;
-        box-sizing: border-box;
 
-    }
     .video-container{
         position: absolute;
-        width: 100%;
+
     }
     #full-video {
         width: 100%;
@@ -213,16 +189,41 @@ export default {
         left: 50%;
         transform: translate(-50%, -50%);
     }
-    @media(max-width: 736px){
+    
+    @media(min-width: 640px){
         .p-overlay{
             font-size: 22vmin;
+        }
+    }
+
+       @media(min-width: 568px){
+        .p-overlay{
+            font-size: 20vmin;
+        }
+    }
+    /* i5$SE */
+      @media(max-width: 414px){
+        .p-overlay{
+            font-size: 25vmin;
+        }
+    }
+    /* ipad */
+      @media(min-width: 768px){
+        .p-overlay{
+            font-size: 25vmin;
+        }
+    }
+    @media(min-width: 1024px)and(max-width: 1366px)
+    {
+        .p-overlay{
+            font-size: 15vmin;
         }
     }
     @media(max-width: 1024px){
         #full-video{
             display: none;
         }
-        .video-container{
+        .header{
             height: 100vh;
             opacity: 0.7;
             background-size: cover;
@@ -233,7 +234,6 @@ export default {
         
     .turn-white{
         font-size: 32px;
-        
     }
     .turn-white:hover{
        
@@ -246,16 +246,8 @@ export default {
     .hint{
         display: none;
     }
-    .footer{
-        background:black;
-        opacity: 0.6;
-    }
+
     .pointer{
         cursor: pointer;
-    }
-    .to{
-        text-indent: 101%;
-        overflow: hidden;
-        white-space: nowrap;
     }
 </style>

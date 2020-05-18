@@ -23,7 +23,10 @@
                         </ul>
                     </td>
                     <td>{{ item.total }}</td>
-                    <td>{{ item.is_paid }}</td>
+                    <td>
+                        <span v-if="item.is_paid == true" class="text-success">是</span>
+                        <span v-if="item.is_paid == false" class="text-danger">否</span>
+                    </td>
                     <td>
                         <button class="btn btn-outline-primary btn-sm" @click="openModal(item)">編輯</button>
                         <!-- <button class="btn btn-outline-danger btn-sm" @click="delCouponModal(item)">刪除</button> -->
@@ -46,26 +49,30 @@
       </div>
       <div class="modal-body">
           <form action="">
-            <div class="form-group">
-                <label for="exampleFormControlInput1">購買時間</label>
-                <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="請輸入購買時間" v-model="tempList.create_at">
-            </div>
+            
              <div class="form-group">
                 <label for="exampleFormControlInput1">Email</label>
                 <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="請輸入Email" v-model="tempList.user.email">
             </div>
             <div class="form-group">
-                <label for="exampleFormControlInput1">購買款項</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="請輸入購買款項">
+                <label for="exampleFormControlInput1">姓名</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="請輸入姓名" v-model="tempList.user.name">
             </div>
-             <div class="form-group">
-                <label for="exampleFormControlInput1">應付金額</label>
-                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="請輸入應付金額" v-model="tempList.total">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">電話</label>
+                <input type="tel" class="form-control" id="exampleFormControlInput1" placeholder="請輸入電話" v-model="tempList.user.tel">
             </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlInput1">地址</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="請輸入地址" v-model="tempList.user.address">
+            </div>
+           
+             
             <div class="form-check">
                 <input class="form-check-input" type="checkbox"
-                  id="is_enabled">
-                <label class="form-check-label" for="is_enabled">
+                  id="is_paid" v-model="tempList.is_paid" :true-value="1" :false-value="0">
+                <label class="form-check-label" for="is_paid">
                   是否付款
                 </label>
               </div>
@@ -107,8 +114,8 @@ export default {
                 products: [],
    
                 },
-            tempProduct: {},
-            productsList: {},
+
+
         }
         
     },
@@ -127,9 +134,10 @@ export default {
                
             })
         },
+
         updateList(){          
             const vm = this;
-            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/product/${vm.tempList.id}`;
+            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/order/${vm.tempList.id}`;
 
                 console.log(process.env.APIPATH, process.env.CUSTOMPATH)
                 this.$http.put(api, {data: vm.tempList}).then((response) => {
@@ -140,21 +148,13 @@ export default {
                     }else{
                       $('#listModal').modal('hide');
                       vm.getList();
-                      console.log('新增失敗');
+                      console.log('修改失敗');
                     };
                     // vm.products = response.data.products;
                 });
         },
          openModal(item){
              const vm = this;
-             for(let i=0; i<vm.list.length; i++){
-                vm.productsList = vm.list[i].products
-                 console.log(vm.productsList[vm.tempList.id])
-                //  for(let j=0; j<productsList.length; j++){
-                //      console.log(productsList[0])
-                //  }
-             }
-            
               this.tempList = Object.assign({}, item);
              $('#listModal').modal('show');
         },

@@ -26,9 +26,8 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#" @click.prevent="typeBtn('ACCESSORIES'); visibility='ACCESSORIES'">ALL</a>
-                                <a class="dropdown-item" href="#" @click.prevent="typeBtn('NECKLACE'); visibility='NECKLACE'">NECKLACE</a>
-                                <a class="dropdown-item" href="#" @click.prevent="typeBtn('BRACELET'); visibility='BRACELET'">BRACELET</a>
                                 <a class="dropdown-item" href="#" @click.prevent="typeBtn('HAT'); visibility='HAT'">HAT</a>
+                                <a class="dropdown-item" href="#" @click.prevent="typeBtn('OTHERS'); visibility='OTHERS'">OTHERS</a>
                                 </div>
                             </li>
                             <li class="nav-item">
@@ -50,26 +49,8 @@ export default {
    
       data(){
         return {
-            products: [],
             isLoading: false,
-            product: {},
-            status:{
-                loadingItem: '',
-            },
-            cart: [],
-            coupon_code: '',
-            form: {
-                user:{
-                    name: '',
-                    tel: '',
-                    email: '',
-                    address: '',
-                },
-                message:'',
-            },
             visibility: '',
-            pagination: [],
-            count: '',
         };
     },
     methods:{

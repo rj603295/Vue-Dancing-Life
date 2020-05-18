@@ -77,7 +77,7 @@
                 </div>
             </div>
             <!-- step2 -->
-            <div class="my-5 row w-100 h-100" v-if="step == 2">
+            <div class="m-0 row w-100 h-100" v-if="step == 2">
                 <form class="col-md-12" @submit.prevent="createOrder">
                     <div class="form-group">
                         <label for="useremail">Email</label>
@@ -217,9 +217,8 @@ export default {
     },
      data(){
         return {
-            products: [],
+
             isLoading: false,
-            product: {},
             status:{
                 loadingItem: '',
             },
@@ -234,14 +233,13 @@ export default {
                 },
                 message:'',
             },
-            visibility: '',
             pagination: [],
             step: 1,
             order: {
                 user: {}
             },
             orderId:'',
-            count: '',
+            coupons: [],
         };
     },
     methods: {
@@ -262,7 +260,6 @@ export default {
             vm.isLoading = true;
             this.$http.get(url).then((response) => {
                 vm.cart = response.data.data;
-                vm.count = response.data.data.carts.length;
                 console.log(response);
                 vm.isLoading = false;
             })
@@ -335,10 +332,6 @@ export default {
                 vm.isLoading = false;
             });
         },
-        // typeBtn(visibility){
-        //     this.$router.push({ path: '/shopping', query: { type: visibility } });
-        //     console.log(this.$route.params.type)
-        // },
 
     },
     created(){
@@ -346,7 +339,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style scoped>
     .responsive{
         font-size: 1.4rem;
         font-family: "微軟正黑體";
@@ -360,7 +353,7 @@ export default {
         top: 0;
         right: 0;
     }
-        .btn-border{
+    .btn-border{
         border: 2px #bda579 solid;
         color: #bda579;
     }
@@ -369,10 +362,9 @@ export default {
         background: #bda579;
         color: white;
     }
-        .btn-color{
+    .btn-color{
         background: #bda579;
         color: white;
-        // #a18e76
     }
     .btn-color:hover{
         background: #97825b;

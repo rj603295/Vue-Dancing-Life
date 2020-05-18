@@ -11,6 +11,7 @@ import Home from '@/components/Home';
 import ProductDetail from '@/components/pages/ProductDetail';
 import Check from '@/components/pages/Check';
 import Setting from '@/components/Setting';
+import FrontCoupon from '@/components/pages/FrontCoupon';
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -19,12 +20,6 @@ export default new VueRouter({
             path: '*',
             redirect: '/'
         },
-        // {
-        //     path: '/',
-        //     name: 'HelloWorld',
-        //     component: HelloWorld,
-        //     meta: { requiresAuth: true }
-        // },
         {
             path: '/login',
             name: 'Login',
@@ -66,6 +61,13 @@ export default new VueRouter({
             component: Home,
         },
         {
+            path: '/get_coupon',
+            name: 'FrontCoupon',
+            component: FrontCoupon,
+            
+        },
+
+        {
             path: '/set',
             name: 'Setting',
             component: Setting,
@@ -88,20 +90,14 @@ export default new VueRouter({
                     component: Check,
                     
                 },
+ 
+                
                 
 
 
                 
             ]
         },
-
-
-        // {
-        //     path: 'check/:orderId',
-        //     name: 'Check',
-        //     component: Check,
-            
-        // },
 
     ],
 });

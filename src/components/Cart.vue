@@ -3,7 +3,7 @@
     <loading :active.sync="isLoading"></loading>
     <div class="dropdown ml-auto fixed">
         <button class="btn btn-sm btn-cart" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <div class="bg-light rounded-circle border border-dark">
+            <div class="bg-light rounded-circle shadow-lg bg-white">
                 <i class="fa fa-shopping-cart fa-2x p-3 position-relative">
                     <div class="position-absolute badge-position">
                         <h6><span class="badge badge-pill badge-danger ">{{ myCart.carts.length }}</span></h6>
@@ -44,15 +44,7 @@ export default {
     props: ['myCart'],
     data(){
         return {
-            products: [],
             isLoading: false,
-            product: {},
-            status:{
-                loadingItem: '',
-            },
-            coupon_code: '',
-            pagination: [],
-            count: '',
         };
     },
     methods:{
@@ -66,7 +58,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped>
     .btn-cart{
         background: transparent;
     }

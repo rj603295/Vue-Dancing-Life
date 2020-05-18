@@ -43,19 +43,7 @@ export default {
                 loadingItem: '',
             },
             cart: [],
-            coupon_code: '',
-            form: {
-                user:{
-                    name: '',
-                    tel: '',
-                    email: '',
-                    address: '',
-                },
-                message:'',
-            },
-            visibility: '',
             pagination: [],
-            count: '',
         };
     },
     methods: {
@@ -98,10 +86,6 @@ export default {
                 vm.isLoading = false;
             })
         },
-        typeBtn(visibility){
-            this.$router.push({ path: '/shopping', query: { type: visibility } });
-            console.log(this.$route.params.type)
-        },
         removeCartItem(id){
             const vm = this;
             const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart/${id}`
@@ -121,16 +105,13 @@ export default {
 
 }
 </script>
-<style lang="scss">
-        .bg-cover{
+<style scoped>
+    .bg-cover{
 			background-size: cover;
 			background-position: center center;
         }
-         .box{
-      		background-color: white;
-      		height: 300px;
-    	}
-            .btn-cart{
+
+    .btn-cart{
         background: transparent;
         position: relative;
     }
@@ -142,7 +123,6 @@ export default {
     .btn-color{
         background: #bda579;
         color: white;
-        // #a18e76
     }
     .btn-color:hover{
         background: #97825b;
