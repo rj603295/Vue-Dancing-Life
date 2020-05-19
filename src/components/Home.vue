@@ -114,36 +114,18 @@ export default {
 
     data(){
         return{
-            height: '',
+            
         }
     },
     
     methods: {
-        getHeight(){
-
-            var div = document.querySelector(".video-container");
-            var parent = document.querySelector(".position");
-
-            var divHeight = div.offsetHeight;
-            console.log(divHeight);
-            if(divHeight != 0){
-                this.height = divHeight;
-            }else if(divHeight == 0){
-
-            }
-
-        },
        
         to(type){
             const vm = this;
-            vm.$router.push(`/set/shopping?type=${type}`);
-            
+            vm.$router.push(`/set/shopping?type=${type}`); 
         }
 
     },
-    mounted(){
-        this.getHeight();
-    }
 }
 </script>
 
