@@ -3,8 +3,10 @@
          <loading :active.sync="isLoading"></loading>
         <div class="container">
             <div class="row my-5">
-                <div class="col-md-7 bg-cover d-flex justify-content-center">
-                    <img class="img-fluid" :src="product.imageUrl" alt="Responsive image">
+                <div class="col-md-7 bg-cover d-flex justify-content-center align-items-center">
+                    <div>
+                        <img class="img-fluid" :src="product.imageUrl" alt="Responsive image">
+                    </div>
                 </div>
                 <div class="col-md-5 mt-5">
                     <h2 class="p">{{ product.title }}</h2>

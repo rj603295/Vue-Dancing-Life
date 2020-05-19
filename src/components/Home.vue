@@ -1,14 +1,17 @@
 <template>
     <div style="font-family: '微軟正黑體';">
         
-        <div class="header position-relative" :style="{height: height+'px'}">
+        <div class="header position-relative">
 
                 <div class="video-container m-0">
                     <video autoplay loop muted id="full-video" poster="https://images.unsplash.com/photo-1551186839-9e4a19b27812?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80">
                         <source src="../assets/hiphop.mp4" type="video/mp4">
                     </video>
                 </div>
-                <h2 class="p-overlay m-0">做你自己</h2>
+                <div class="p-overlay">
+                    <h2 class="m-0">做你自己</h2>
+                </div>
+
                 <div class="navbar-overlay text-bold">
                         <nav class="navbar navbar-expand-lg navbar-light">
                             <div class="container-fluid">
@@ -159,10 +162,16 @@ export default {
     	}
     .header{
         width: 100%;
+        height: 100vh;
+        opacity: 0.7;
+        background-size: cover;
+        background-position: center center;
+        background-image: url('https://images.unsplash.com/photo-1551186839-9e4a19b27812?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');
     }
 
     .video-container{
         position: absolute;
+        display: none;
 
     }
     #full-video {
@@ -177,7 +186,7 @@ export default {
     .navbar-overlay{
         position: absolute;
         top: 0px;
-        z-index: 9999;
+        z-index: 1000;
         width: 100%;
     }
     .p-overlay{
@@ -186,54 +195,49 @@ export default {
         color: white;
         font-weight: bold;
         font-family:'微軟正黑體';
-        font-size:25vmin;
         top:50%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
-    
-    @media(min-width: 640px){
-        .p-overlay{
-            font-size: 22vmin;
+    .p-overlay h2{
+        font-weight: bold;
+        font-size: 10vw;
+        text-align: center;
+    }
+
+       @media(max-width: 414px){
+        .p-overlay h2{
+            font-size: 22vw;
         }
     }
 
-       @media(min-width: 568px){
-        .p-overlay{
-            font-size: 20vmin;
-        }
-    }
-    /* i5$SE */
-      @media(max-width: 414px){
-        .p-overlay{
-            font-size: 25vmin;
-        }
-    }
     /* ipad */
-      @media(min-width: 768px){
-        .p-overlay{
-            font-size: 25vmin;
+    @media(max-width: 811px) and (min-width: 768px){
+        .p-overlay h2{
+            font-size: 22vw;
         }
     }
-    @media(min-width: 1024px)and(max-width: 1366px)
-    {
-        .p-overlay{
-            font-size: 15vmin;
+    @media(max-width: 811px) and (min-width: 768px){
+        .p-overlay h2{
+            font-size: 22vw;
         }
     }
-    @media(max-width: 1024px){
-        #full-video{
-            display: none;
+    @media(max-width: 1366px) and (min-width: 1024px){
+        .p-overlay h2{
+            font-size: 12vw;
+        }
+    }
+    /* 電腦版首頁背景改成影片 */
+    @media(min-width: 1366px){
+        .video-container{
+            display: block;
         }
         .header{
-            height: 100vh;
-            opacity: 0.7;
-            background-size: cover;
-			background-position: center center;
-            background-image: url('https://images.unsplash.com/photo-1551186839-9e4a19b27812?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');
+            background-image: none;
+            opacity: 1;
         }
-    }
-        
+
+    }  
     .turn-white{
         font-size: 32px;
     }
