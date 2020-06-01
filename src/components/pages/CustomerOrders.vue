@@ -8,7 +8,7 @@
                   <!-- <div class="p-4" style="height: 400px; background-size: cover; background-position: center"
                   :style="{backgroundImage: `url(${item.imageUrl})`}">
                   </div> -->
-                  <div class="mx-3">
+                  <div class="mx-3 d-flex justify-content-center align-items-center">
                     <img :src="item.imageUrl" alt="" class="img-fluid" style="height: 350px; width: 350px;">
                   </div>
                   
