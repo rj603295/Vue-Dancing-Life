@@ -1,29 +1,7 @@
 <template>
     <div style="font-family: '微軟正黑體';">
                     <div class="navbar-overlay text-bold">
-                        <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-                            <div class="container-fluid">
-                                <a class="text-decoration-none" href="#/dist"><h1 class="h2" style="color: white;">Dancing Life</h1></a>
-                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                                        <span class="navbar-toggler-icon">
-                                            <i class="fas fa-bars" style="color:#fff; font-size:28px;"></i>
-                                        </span>
-                                    </button>
-                                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                                        <ul class="navbar-nav mr-auto">
-                                        <li class="nav-item active">
-                                            <a href="#/dist" class="nav-link text-white">首頁 <span class="sr-only">(current)</span></a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#/set/shopping" class="nav-link text-white">購物商城</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#/get_coupon" class="nav-link text-white">優惠券</a>
-                                        </li>
-                                        </ul>
-                                    </div>
-                            </div>
-                        </nav>
+                        <HomeNavbar></HomeNavbar>
                     </div>
         <div class="dancing bg-cover d-flex align-items-center justify-content-center">
             
@@ -50,13 +28,15 @@
 <script>
 import $ from 'jquery';
 import Footer from '../Footer';
+import HomeNavbar from '../HomeNavbar'
 export default {
     components:{
        Footer,
+       HomeNavbar,
     },
 }
 </script>
-<style scoped>
+<style scoped lang="scss">
     .bg-cover{
 			background-size: cover;
 			background-position: center center;
@@ -73,12 +53,11 @@ export default {
      .btn-color{
         background: #bda579;
         color: white;
-    }
-    .btn-color:hover{
-        background: #97825b;
-        color: white;
-
+        &:hover{
+            background: #97825b;
+            color: white;
         }
+    }
     .navbar-overlay{
         position: absolute;
         top: 0px;

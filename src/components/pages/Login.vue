@@ -51,7 +51,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style scoped lang="scss">
   html,
 body {
   height: 100%;
@@ -103,11 +103,12 @@ h1{
 .btn-color{
 background: #bda579;
 color: white;
+  &:hover{
+      background: #97825b;
+      color: white;
+  }
 }
-.btn-color:hover{
-    background: #97825b;
-    color: white;
-}
+
 </style>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

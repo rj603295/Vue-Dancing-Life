@@ -7,6 +7,10 @@ import 'bootstrap';
 import VeeValidate from 'vee-validate';
 import VueI18n from 'vue-i18n';
 import zhTW from 'vee-validate/dist/locale/zh_TW';
+import VueCarousel from 'vue-carousel';
+import animated from 'animate.css'; 
+
+
 
 
 import App from './App';
@@ -16,8 +20,10 @@ import currencyFilter from './filters/currency';
 import dateFilter from './filters/date';
 
 Vue.use(VueAxios, axios);
+Vue.use(VueCarousel);
 // Vue.use(VeeValidate);
 Vue.use(VueI18n);
+Vue.use(animated);
 Vue.config.productionTip = false
 
 Vue.component('Loading', Loading);

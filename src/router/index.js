@@ -12,6 +12,10 @@ import ProductDetail from '@/components/pages/ProductDetail';
 import Check from '@/components/pages/Check';
 import Setting from '@/components/Setting';
 import FrontCoupon from '@/components/pages/FrontCoupon';
+import Competition from '@/components/pages/Competition';
+import BuyInfo from '@/components/pages/BuyInfo';
+import AfterBuy from '@/components/pages/AfterBuy';
+import Contact from '@/components/pages/Contact';
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -66,6 +70,12 @@ export default new VueRouter({
             component: FrontCoupon,
             
         },
+        {
+            path: '/competition',
+            name: 'Competition',
+            component: Competition,
+            
+        },
 
         {
             path: '/set',
@@ -90,11 +100,21 @@ export default new VueRouter({
                     component: Check,
                     
                 },
- 
-                
-                
-
-
+                {
+                    path: 'buy_info',
+                    name: 'BuyInfo',
+                    component: BuyInfo,
+                },
+                {
+                    path: 'after_buy',
+                    name: 'AfterBuy',
+                    component: AfterBuy,
+                },
+                {
+                    path: 'contact',
+                    name: 'Contact',
+                    component: Contact,
+                },
                 
             ]
         },

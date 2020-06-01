@@ -4,25 +4,35 @@
          <div class="container-fluid">
             <div class="row mt-4">
             <div class="col-md-3 mb-4" v-for="item in filterProducts" :key="item.id">
-            <div class="card border-0"  @click="getProduct(item.id)">
-                <!-- <div class="p-4" style="height: 400px; background-size: cover; background-position: center"
-                :style="{backgroundImage: `url(${item.imageUrl})`}">
-                </div> -->
-                <img :src="item.imageUrl" alt="" class="img-fluid" style="height: 350px; width: 350px;">
-                <div class="card-body border-0">
-               
-                    <h5 class="card-title text-center">
-                        <a href="#" class="text-dark">{{ item.title }}</a>
-                    </h5>
-                    <p class="card-text">{{ item.content }}</p>
-                <div class=""> 
-                    <del class="h6">{{ item.orgin_price }}</del>
-                    <p class="h5 text-center">{{ '$'+item.price }}</p>
-                </div>
-                </div>
-                    <div class="card-footer d-flex border-0 bg-transparent">
+              <div class="card border-0"  @click="getProduct(item.id, $event)">
+                  <!-- <div class="p-4" style="height: 400px; background-size: cover; background-position: center"
+                  :style="{backgroundImage: `url(${item.imageUrl})`}">
+                  </div> -->
+                  <div class="mx-3">
+                    <img :src="item.imageUrl" alt="" class="img-fluid" style="height: 350px; width: 350px;">
+                  </div>
+                  
+                  <div class="card-body">
+                
+                      <h5 class="card-title text-center">
+                          <a href="#" class="text-dark">{{ item.title }}</a>
+                      </h5>
+                    
+                      <div class="price"> 
+                          <del class="h6">{{ item.orgin_price }}</del>
+                          <p class="h5 text-center">{{ '$'+item.price }}</p>
+                      </div>
+                  </div>
+                  <div class="price-wrap animate__animated animate__fadeIn">
+                    <div class="price-overlay p-3 bg-light rounded shadow-lg">
+                      <p class="h5 text-center">{{ '$'+item.price }}</p>
+                      <a class="btn btn-color" href="#" role="button" @click.prevent="addtoCart(item.id)">加入購物車</a>
                     </div>
-                </div>
+                    
+                  </div>
+                      <!-- <div class="card-footer d-flex border-0 bg-transparent">
+                    </div> -->
+              </div>
             </div>
             </div>
         </div>
@@ -53,6 +63,7 @@ export default {
             },
             cart: [],
             pagination: [],
+            delay: [1, 2, 3, 4, 5, 6, 7],
         };
     },
     methods: {
@@ -70,7 +81,7 @@ export default {
                     vm.pagination = response.data.pagination;
                 });
         },
-        getProduct(id){
+        getProduct(id, event){
             const vm = this;
             const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/product/${id}`
             vm.status.loadingItem = id;
@@ -79,8 +90,16 @@ export default {
                 // $('#productModal').modal('show');
                 console.log(response);
                 vm.status.loadingItem = '';
-                vm.$router.push(`shopping/${response.data.product.id}`);
+                console.log(event.target.tagName)
+
+                if(event.target.tagName == 'A'){
+                  return;
+                }else{
+                  vm.$router.push(`shopping/${response.data.product.id}`);
+                }
+                
             })
+  
         },
         getCart(){
             const vm = this;
@@ -102,18 +121,64 @@ export default {
                 vm.isLoading = false;
             })
         },
+        addtoCart(id, qty = 1){
+                const vm = this;
+                const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`
+                vm.status.loadingItem = id;
+                const cart = {
+                    product_id: id,
+                    qty
+                }
+                vm.isLoading = true;
+                this.$http.post(url, {data: cart}).then((response) => {
+                    console.log(response);
+                    vm.status.loadingItem = '';
+                    vm.isLoading = false;
+                    vm.getCart();
+                    // $('#productModal').modal('hide');
+                })
+            },
+        scroll() {
+            // 捲動頁面執行動畫
+            const scrollPos = $(window).scrollTop();
+            const windowHeight = $(window).height();
+            $('.animated').each(function animated(){
+                var thisPos = $(this).offset().top;
+                if((windowHeight + scrollPos)>= thisPos-400){
+                    $(this).addClass('fadeIn')
+                }
+            });
+            $('.animated-left').each(function animatedLeft(){
+                var thisPos = $(this).offset().top;
+                if((windowHeight + scrollPos)>= thisPos){
+                    $(this).addClass('fadeIn2')
+                }
+            });
+            $('.animated-right').each(function animatedRight(){
+                var thisPos = $(this).offset().top;
+                if((windowHeight + scrollPos)>= thisPos){
+                    $(this).addClass('fadeIn2')
+                }
+            });
+        },
   
         
     },
         created(){
         this.getProducts();
         this.getCart();
+        this.scroll();
+
+        //  window.addEventListener('scroll', this.scroll);
+
 
     },
 
 
+
     computed: {
         filterProducts: function(){
+          // this.products
 
           var enabledProducts = [];
           this.products.forEach(function(item){
@@ -189,8 +254,71 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     .card{
         cursor: pointer;
+ 
+        &:hover .price-wrap{
+          display: block;
+        }
+
     }
+    .animated{
+        opacity: 0;
+        transition: all 3s;
+        transform: translateY(50px);
+    }
+    .fadeIn{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    .price-wrap{
+      position: absolute;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      width: 100%;
+      height: 100%;
+    }
+    .price-overlay{
+      position: absolute;
+      top:50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .btn-color{
+        background: #bda579;
+        color: white;
+        &:hover{
+          background: #97825b;
+          color: white;
+        }
+    }
+    .price{
+      display: none;
+    }
+    .btn-border{
+        border: 2px #bda579 solid;
+        color: #bda579;
+        &:hover{
+          border: 2px #bda579 solid;
+          background: #bda579;
+          color: white;
+        }
+    }
+    @media(max-width: 1366px){
+      .price{
+        display:block;
+      }
+      .price-wrap{
+        display: none;
+      }
+      .card{
+          &:hover .price-wrap{
+            display: none;
+          }
+
+      }
+    }
+
+  
 </style>

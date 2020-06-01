@@ -58,7 +58,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     .btn-cart{
         background: transparent;
     }
@@ -75,11 +75,11 @@ export default {
     .btn-border{
         border: 2px #bda579 solid;
         color: #bda579;
-    }
-    .btn-border:hover{
-        border: 2px #bda579 solid;
-        background: #bda579;
-        color: white;
+        &:hover{
+          border: 2px #bda579 solid;
+          background: #bda579;
+          color: white;
+        }
     }
 
 </style>

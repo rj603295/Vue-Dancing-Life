@@ -24,6 +24,18 @@
 
                 </div>
             </div>
+            <div>
+                <h2>猜你也會喜歡...</h2>
+                <hr/>
+                <div class="row mb-5">
+                    <div class="col-md-3 pointer" v-for="(item, i) in filterProducts.slice(0,4)" :key="i">
+                        <div class="big" @click="getProduct(item.id)">
+                            <router-link :to="`${product.id}`"><img class="img-fluid" :src="item.imageUrl" alt=""></router-link>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
         </div>
         <Cart :my-cart="cart" @delCart="removeCartItem" v-if="cart.carts"></Cart>
     </div>
@@ -46,9 +58,23 @@ export default {
             },
             cart: [],
             pagination: [],
+            products: [],
         };
     },
     methods: {
+        getProducts(page = 1){
+            const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/products/all`;
+            const vm = this;
+
+                console.log(process.env.APIPATH, process.env.CUSTOMPATH)
+                vm.isLoading = true;
+                this.$http.get(api).then((response) => {
+                    console.log(response.data);
+                    vm.isLoading = false;
+                      vm.products = response.data.products;
+                    vm.pagination = response.data.pagination;
+                });
+        },
          getProduct(id){
             const vm = this;
             const url = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/product/${id}`
@@ -58,6 +84,7 @@ export default {
                 // $('#productModal').modal('show');
                 console.log(response);
                 vm.status.loadingItem = '';
+                
             })
         },
         addtoCart(id, qty = 1){
@@ -102,12 +129,25 @@ export default {
     created(){
        this.getProduct(this.$route.params.id);
        this.getCart();
+       this.getProducts();
       
     },
+    computed: {
+        filterProducts: function(){
+            var vm = this;
+            var enabledProducts = [];
+          vm.products.forEach(function(item){
+          if(item.is_enalbed == 1 && item.category == vm.product.category && item.title !== vm.product.title){
+            enabledProducts.push(item);
+          }
+        })
+        return enabledProducts;
+    }
+}
 
 }
 </script>
-<style scoped>
+<style scoped lang="scss">
     .bg-cover{
 			background-size: cover;
 			background-position: center center;
@@ -117,18 +157,21 @@ export default {
         background: transparent;
         position: relative;
     }
-    .btn-cart .badge{
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
     .btn-color{
         background: #bda579;
         color: white;
-    }
-    .btn-color:hover{
-        background: #97825b;
-        color: white;
-
+        &:hover{
+            background: #97825b;
+            color: white;
         }
+    }
+    .pointer{
+        cursor: pointer;
+    }
+    .big{
+        &:hover{
+            transform: scale(1.1);
+            transition: 0.7s;
+        }
+    }
 </style>

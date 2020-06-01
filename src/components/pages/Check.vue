@@ -339,36 +339,26 @@ export default {
     }
 }
 </script>
-<style scoped>
+<style scoped lang="scss">
     .responsive{
         font-size: 1.4rem;
         font-family: "微軟正黑體";
     }
-    .btn-cart{
-        background: transparent;
-        position: relative;
-    }
-    .btn-cart .badge{
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
     .btn-border{
         border: 2px #bda579 solid;
         color: #bda579;
-    }
-    .btn-border:hover{
-        border: 2px #bda579 solid;
-        background: #bda579;
-        color: white;
+        &:hover{
+            border: 2px #bda579 solid;
+            background: #bda579;
+            color: white;
+        }
     }
     .btn-color{
         background: #bda579;
         color: white;
-    }
-    .btn-color:hover{
-        background: #97825b;
-        color: white;
-
+        &:hover{
+            background: #97825b;
+            color: white;
         }
+    }
 </style>
