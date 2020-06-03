@@ -25,7 +25,7 @@
             <div class="container" v-if="area == '北部'">
                 <div class="row mb-4">
                     <div class="col-md-6">
-                        <div class="box bg-cover" style="background-image: url('https://images.unsplash.com/photo-1531503406248-d63777b50f39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80')"></div>
+                        <div class="box bg-cover competition-1"></div>
                     </div>
                     <div class="col-md-6 ">
                         <h3 class="mt-3">捷運盃街舞大賽</h3>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="row mb-4">
                     <div class="col-md-6">
-                        <div class="box bg-cover" style="background-image: url('https://miro.medium.com/max/4096/1*2szi_LrY0SL4V2NiJLlDiQ.jpeg')"></div>
+                        <div class="box bg-cover competition-2"></div>
                     </div>
                     <div class="col-md-6">
                         <h3 class="mt-3">Hip Hop International Taiwan</h3>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="row mb-4">
                     <div class="col-md-6">
-                        <div class="box bg-cover" style="background-image: url('https://images.unsplash.com/photo-1504647164485-1d91e1d0a112?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80')"></div>
+                        <div class="box bg-cover competition-3"></div>
                     </div>
                     <div class="col-md-6">
                         <h3 class="mt-3">OBS BATTLE VOL. 13</h3>
@@ -71,7 +71,7 @@
             <div class="container" v-if="area == '中部'">
                 <div class="row mb-4">
                     <div class="col-md-6">
-                        <div class="box bg-cover" style="background-image: url('https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80')"></div>
+                        <div class="box bg-cover competition-4"></div>
                     </div>
                     <div class="col-md-6">
                         <h3 class="mt-3">台中市亞洲街舞邀請賽</h3>
@@ -86,7 +86,7 @@
                 </div>
                 <div class="row mb-4">
                     <div class="col-md-6">
-                        <div class="box bg-cover" style="background-image: url('https://images.unsplash.com/photo-1533557821112-0f355ba8c7ac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80')"></div>
+                        <div class="box bg-cover competition-5"></div>
                     </div>
                     <div class="col-md-6">
                         <h3 class="mt-3">HIGH SCHOOL FIGHT高校街舞大賽</h3>
@@ -102,7 +102,7 @@
             <div class="container" v-if="area == '南部'">
                 <div class="row mb-4">
                     <div class="col-md-6">
-                        <div class="box bg-cover" style="background-image: url('https://images.unsplash.com/photo-1502519144081-acca18599776?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80')"></div>
+                        <div class="box bg-cover competition-6"></div>
                     </div>
                     <div class="col-md-6">
                         <h3 class="mt-3">HOT街舞賽</h3>
@@ -146,7 +146,7 @@ export default {
         // min-height: 400px;
         background-position: center center;
         background-size: cover;
-        background-image: url('https://images.unsplash.com/photo-1576694040870-b8e0886af262?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')
+        background-image: url(../../assets/img/jumbotron-bg.jpg)
     }
     .bg-lighter{
         background-color: rgba(255, 255, 255, 0.5);
@@ -162,6 +162,24 @@ export default {
     }
     ol, ul {
         list-style: none;
+    }
+    .competition-1{
+        background-image: url(../../assets/img/competition-1.jpg)
+    }
+    .competition-2{
+        background-image: url(../../assets/img/competition-2.jpg)
+    }
+    .competition-3{
+        background-image: url(../../assets/img/competition-3.jpg)
+    }
+    .competition-4{
+        background-image: url(../../assets/img/competition-4.jpg)
+    }
+    .competition-5{
+        background-image: url(../../assets/img/competition-5.jpg)
+    }
+    .competition-6{
+        background-image: url(../../assets/img/competition-6.jpg)
     }
     
 </style>

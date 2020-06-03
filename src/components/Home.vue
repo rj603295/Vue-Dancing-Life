@@ -4,7 +4,7 @@
         <div class="header position-relative w-100">
 
                 <div class="video-container m-0">
-                    <video autoplay loop muted id="full-video" poster="https://images.unsplash.com/photo-1551186839-9e4a19b27812?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80">
+                    <video autoplay loop muted id="full-video" poster="../assets/img/banner.jpg">
                         <source src="../assets/hiphop.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -53,38 +53,39 @@
             </div>
         </section>
         <!-- 商品分類 -->
-        <section class="bg-light hidden">
-            <div>
+        <section class="bg-light hidden category-wrap">
                 <h2 class="text-center pt-5">商品分類</h2>
-            </div>
-            <div class="container-fluid">
-                <div class="row justify-content-around animated-right">
-                    <div class="col-md-3 position-relative turn-white-wrap" @click="to('PANTS')">   
-                        <div class="bg-cover box turn-white mt-5 pointer" style="background-image: url('http://stussy-wordpress-production2.s3.amazonaws.com/assets/img-32.jpg')">
+            <div class="container-fluid h-100">
+                <div class="row justify-content-around animated-right" style="height:45%">
+                    <div class="col-md-4 position-relative turn-white-wrap mt-4" @click="to('PANTS')">   
+                        <div class="bg-cover h-100 turn-white pointer category-pants">
                         </div>
                         <p class="font-weight-bold hint">Pants</p>
+                        
                     </div>
-                    <div class="col-md-6 position-relative turn-white-wrap"  @click="to('TEE')">
-                        <div class="bg-cover box turn-white mt-5 pointer " style="background-image: url('https://images.unsplash.com/photo-1549937055-8e09ab35cf64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80')">
+                    <div class="col-md-5 position-relative turn-white-wrap mt-4"  @click="to('TEE')">
+                        <div class="bg-cover h-100 turn-white pointer category-tshirt">
                         </div>
                         <p class="font-weight-bold hint">T-shirt</p>
+                        
                     </div>
                     
-                    <div class="col-md-2 position-relative turn-white-wrap" @click="to('SHOES')">
-                        <div class="bg-cover box turn-white mt-5 pointer" style="background-image: url('https://images.unsplash.com/photo-1532471965572-092fb677a6a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80')">
+                    <div class="col-md-3 position-relative turn-white-wrap mt-4" @click="to('SHOES')">
+                        <div class="bg-cover h-100 turn-white pointer category-shoes">
                         </div>
                         <p class="font-weight-bold hint">Shoes</p>
+                       
                     </div>
 
                 </div>
-                <div class="row justify-content-around pb-5 animated-left">
-                    <div class="col-md-7 position-relative turn-white-wrap" @click="to('ACCESSORIES')">
-                        <div class="bg-cover box turn-white mt-5 pointer" style="background-image: url('https://images.unsplash.com/photo-1563191735-862765edd4fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80')">
+                <div class="row justify-content-around pb-5 animated-left mt-4" style="height: 45%">
+                    <div class="col-md-7 position-relative turn-white-wrap mb-4" @click="to('ACCESSORIES')">
+                        <div class="bg-cover h-100 turn-white pointer category-accessories">
                         </div>
                         <p class="font-weight-bold hint">Accessories</p>
                     </div>
-                    <div class="col-md-4 position-relative turn-white-wrap" @click="to('JACKET')">
-                        <div class="bg-cover box turn-white mt-5 pointer" style="background-image: url('https://images.unsplash.com/photo-1488676760857-e66012daf47a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1173&q=80')">
+                    <div class="col-md-5 position-relative turn-white-wrap mb-4" @click="to('JACKET')">
+                        <div class="bg-cover box turn-white pointer category-jacket">
                         </div>
                         <p class="font-weight-bold hint">Jacket</p>
                     </div>
@@ -100,148 +101,113 @@
                 <h2 class="animated text-center py-5">每週穿搭分享</h2>
             </div>
             <div class="container">
-
-                <!--Carousel Wrapper-->
-            <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-
-
-
-            
-
-            <!--Slides-->
-            <div class="carousel-inner" role="listbox">
-                <!--First slide-->
-                <div class="carousel-item active">
-                    <div class="row">
-                        <div class="col-md-3 mb-4 animated" style="float:left">
-                        <div class="card text-center h-100 box-shadow">
-                        <img src="https://images.unsplash.com/photo-1512090421650-1ba94830f7b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title font-weight-bold">誰說Hip Hop只能鬆鬆垮垮</h5>
-                            <p class="card-text mb-3">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer  bg-white">
-                            <a href="#" class="btn btn-warning">See More</a>
-                        </div>
-                        </div>
-                </div>
-
-                <div class="col-md-3 mb-4 animated" style="float:left">
-                        <div class="card text-center h-100 box-shadow">
-                        <img src="https://images.unsplash.com/photo-1511929958725-bd96f4db195f?ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80" class="card-img-top" alt="...">
+            <carousel class="animated" :navigationEnabled="true" :paginationEnabled="false" :scrollPerPage="false"
+          :mouseDrag="true" :autoplay="false" :autoplayTimeout="2500" :autoplayHoverPause="false"
+          :loop="true" :speed="3000" :adjustableHeight="false" :perPage="5" :touchDrag="true" :perPageCustom="[[300, 1], [500, 2], [767, 3], [1000, 4]]">
+                <slide class="slide-width">
+                        <div class="card text-center box-shadow m-2">
+                                <img src="../assets/img/outfit-1.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title font-weight-bold">誰說Hip Hop只能鬆鬆垮垮</h5>
+                                    <p class="card-text mb-3 ellipsis">流行趨勢說穿了就是個輪迴 ── 曾經我們流行寬鬆、配色鮮豔的美式風格，經過幾年轉變，慢慢開始穿上合身、Skinny 的服飾。從西海岸出發，日系、韓系接踵而至,
+                                        韓國幾位當紅的饒舌歌手或音樂人身穿「合身且用色大膽的西裝」，搭配墨鏡、棒球帽等「嘻哈配件」
+                                    </p>
+                                    
+                                </div>
+                                <div class="card-footer bg-white">
+                                    <a href="#" class="btn btn-warning">See More</a>
+                                </div>
+                                </div>
+                   
+                </slide >
+                <slide>
+                    <div class="card text-center box-shadow m-2">
+                        <img src="../assets/img/outfit-2.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                         <h5 class="card-title font-weight-bold">屬於B-boy的帥氣戰袍</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text ellipsis">80年代初期出現於美國東岸的B-Boys穿搭不外乎有Kangol漁夫帽、厚重的街頭感大金鍊和印上自己名號的項鍊，腳上配著貝殼鞋頭、綁著寬鞋帶的運動鞋，上身則是黑色運動服(有時是黑色皮革上衣)。</p>
                         </div>
                         <div class="card-footer  bg-white">
                                 <a href="#" class="btn btn-warning">See More</a>
                         </div>
-                        </div>
                     </div>
-
-                <div class="col-md-3 mb-4 animated" style="float:left">
-                        <div class="card text-center h-100 box-shadow">
-                        <img src="https://static.juksy.com/files/articles/47906/567a8ed2932f9.jpg" class="card-img-top" alt="...">
+                </slide>
+                <slide>
+                    <div class="card text-center box-shadow m-2">
+                        <img src="../assets/img/outfit-3.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                         <h5 class="card-title font-weight-bold">各式Locker經典outfit</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text ellipsis">Locking 的源頭來自於充滿派對和活力的 Funk 音樂，是相當具有表演性質的舞風，有許多基本動作也和觀眾互動或與伙伴合體有關。此舞風誕生沒多久後，發明者 Don Campbell 就組了 「The Lockers」的舞團並在電視節目走紅，為了吸引觀眾，Locker 們的經典服裝通常鮮豔亮麗且有條紋或吊帶的裝飾，現今的 Locker 也常會從中擷取元素加入自己的表演服甚至日常穿搭中！</p>
                         </div>
                         <div class="card-footer  bg-white">
                             <a href="#" class="btn btn-warning">See More</a>
                         </div>
-                        </div>
                     </div>
-                
-                <div class="col-md-3 mb-4 animated" style="float:left">
-                        <div class="card text-center h-100 box-shadow">
-                            <img src="https://images.unsplash.com/photo-1548123378-bde4eca81d2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" class="card-img-top" alt="...">
+                </slide>
+                <slide>
+                    <div class="card text-center box-shadow m-2">
+                            <img src="../assets/img/outfit-4.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                         <h5 class="card-title font-weight-bold">Jay老師的一週穿搭分享</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text ellipsis">T恤的選擇一定要寬鬆，oversize的感覺很重要。而且T恤最好選擇純色或者是有頭像、字母印花的，不要太過花哨，容易在跳舞時造成雜亂的效果。拼接色的夾克因為色彩的設計很考究，層次明顯，而用白色作為打底對比強烈，動起來視覺效果極佳。</p>
                         </div>
                         <div class="card-footer  bg-white">
                             <a href="#" class="btn btn-warning">See More</a>
                         </div>
-                        </div>
                     </div>
-                    </div>
-                
-
-                </div>
-                <!--/.First slide-->
-
-                <!--Second slide-->
-                <div class="carousel-item">
-
-                <div class="row">
-                        <div class="col-md-3 mb-4 animated" style="float:left">
-                        <div class="card text-center h-100 box-shadow">
-                        <img src="https://i1.kknews.cc/SIG=2a37tal/312r000no47nr68553q0.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title font-weight-bold">回到 1990 年代！復古風潮！</h5>
-                            <p class="card-text mb-3">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer  bg-white">
-                            <a href="#" class="btn btn-warning">See More</a>
-                        </div>
-                        </div>
-                </div>
-
-                <div class="col-md-3 mb-4 animated" style="float:left">
-                        <div class="card text-center h-100 box-shadow">
-                        <img src="https://cdn-static.farfetch-contents.com/cms-cm/cz/media/217266/data/b9d996d86672a115df05d5f9f71adb2a.jpg?ratio=16x9_under&minWidth=1142" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title font-weight-bold">Lia Kim教你如何穿出百變造型</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer  bg-white">
+                </slide>
+                <slide>
+                    <div class="card text-center box-shadow m-2">
+                            <img src="../assets/img/outfit-5.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                            <h5 class="card-title font-weight-bold">回到 1990 年代！復古風潮！</h5>
+                                <p class="card-text mb-3 ellipsis">這兩年時尚圈颳起90年代復古風，盛極一時的嘻哈街頭風也再度回流。不過，當年的垮褲、Oversize T恤已不再是主流，但寬鬆、好活動、崇尚自由的精神則被保留，工作褲、丹寧破壞褲、寬鬆襯衫內搭T恤成為2018街頭定番；</p>
+                            </div>
+                            <div class="card-footer  bg-white">
                                 <a href="#" class="btn btn-warning">See More</a>
-                        </div>
-                        </div>
+                            </div>
                     </div>
-
-                <div class="col-md-3 mb-4 animated" style="float:left">
-                        <div class="card text-center h-100 box-shadow">
-                        <img src="https://pic.765news.com/upload/images/article/20190529/2019052915524790905.jpeg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title font-weight-bold">跟著《這！就是街舞》學穿搭！</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer  bg-white">
-                            <a href="#" class="btn btn-warning">See More</a>
-                        </div>
-                        </div>
+                </slide>
+                <slide>
+                    <div class="card text-center box-shadow m-2">
+                            <img src="../assets/img/outfit-6.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                            <h5 class="card-title font-weight-bold">Lia Kim教你如何穿出百變造型</h5>
+                                <p class="card-text ellipsis">講到韓國舞蹈界就不得不提到「Lia Kim」，不僅擁有超強舞技還幫許多知名韓團編舞可說是韓團的幕後推手，同時也是韓國知名舞蹈教室「One Million Dance Studio 」的當家老師；聽說要上她的課更是要擠破頭啊！說他是韓國「最強編舞教母」實在不為過！</p>
+                            </div>
+                            <div class="card-footer  bg-white">
+                                    <a href="#" class="btn btn-warning">See More</a>
+                            </div>
                     </div>
-                    <div class="col-md-3 mb-4 animated" style="float:left">
-                        <div class="card text-center h-100 box-shadow">
-                        <img src="https://images.unsplash.com/photo-1504283118898-1bc1e87f52a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=906&q=80" class="card-img-top" alt="...">
+                </slide>
+                <slide>
+                    <div class="card text-center box-shadow m-2">
+                            <img src="../assets/img/outfit-7.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                            <h5 class="card-title font-weight-bold">跟著《這！就是街舞》學穿搭！</h5>
+                                <p class="card-text ellipsis">都是當下熾手可熱並在街舞領域上有所造詣的明星，從目前已播出的三期來看，參賽選手也是臥虎藏龍，高手雲集精湛的舞技讓人嘆為觀止，不禁感嘆一句：「這真是人能做到的動作嗎？」自《中國有嘻哈》大熱之後，又一檔同類型綜藝《看！這就是街舞》如火如荼地開播</p>
+                            </div>
+                            <div class="card-footer  bg-white">
+                                <a href="#" class="btn btn-warning">See More</a>
+                            </div>
+                    </div>
+                </slide>
+                <slide>
+                    <div class="card text-center box-shadow m-2">
+                        <img src="../assets/img/outfit-8.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                         <h5 class="card-title font-weight-bold">百搭帽T特輯</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text ellipsis">帽T的可穿性很高，寬鬆的帽T穿起來舒適，搭配牛仔褲、破洞褲、運動褲等都很合適。而且要想穿出層次感也很簡單，做內搭或者外套都是很好地選擇。帽T的設計很簡約，百搭，不喜歡簡單的朋友可以像易烊千璽一樣選擇色塊拼接的衛衣，看起來更有設計感，個性更強。</p>
                         </div>
                         <div class="card-footer bg-white">
                             <a href="#" class="btn btn-warning">See More</a>
                         </div>
-                        </div>
                     </div>
-                
-                    </div>
+                </slide>
 
-                </div>
-                <!--/.Second slide-->
+            </carousel>
             </div>
-            <!--/.Slides-->
-            <!--Controls-->
-            <div class="controls-top d-flex justify-content-center">
-                <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-circle-left fa-3x text-warning"></i></a>
-                <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-circle-right fa-3x text-warning"></i></a>
-            </div>
-            <!--/.Controls-->
-            </div>
-        <!--/.Carousel Wrapper-->
-            </div>
+            
         </section>
 
         <!-- 關於我 -->
@@ -352,9 +318,22 @@ export default {
                 }
             });
         },
+        textHidden(){
+            $(function(){
+            var len = 55; // 超過55個字以"..."取代
+            $(".ellipsis").each(function(i){
+                if($(this).text().length>len){
+                    $(this).attr("title",$(this).text());
+                    var text=$(this).text().substring(0,len-1)+"...";
+                    $(this).text(text);
+                }
+            });
+        });
+        }
     },
     created(){
         this.getProducts();
+        this.textHidden();
         window.addEventListener('scroll', this.scroll);
     },
     // destroyed() {
@@ -376,7 +355,21 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+    .category-pants{
+        background-image: url(../assets/img/category-pants.jpg);
+    }
+    .category-tshirt{
+        background-image: url(../assets/img/category-tshirt.jpg)
+    }
+    .category-shoes{
+        background-image: url(../assets/img/category-shoes.jpg)
+    }
+    .category-accessories{
+        background-image: url(../assets/img/category-accessories.jpg)
+    }
+    .category-jacket{
+        background-image: url(../assets/img/category-jacket.jpg)
+    }
     .logo{
         width: 200px;
         height: auto;
@@ -386,7 +379,7 @@ export default {
         background-position: center center;
     }
     .box{
-        height: 300px;
+        height: 100%;
     }
     .header{
         width: 100%;
@@ -394,7 +387,7 @@ export default {
         opacity: 0.7;
         background-size: cover;
         background-position: center center;
-        background-image: url('https://images.unsplash.com/photo-1551186839-9e4a19b27812?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');
+        background-image: url(../assets/img/banner.jpg);
     }
     .video-container{
         position: absolute;
@@ -478,6 +471,13 @@ export default {
         &:hover p{
             display: block;
         }
+        a{
+            position: absolute;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+        }
     }
     .hint{
         display: none;
@@ -506,7 +506,7 @@ export default {
         }
     }
     .faqbg{
-        background-image: url('https://content.asos-media.com/-/media/homepages/unisex/service-messages/covid-19/dt_hero_live_banner_cv19_2880x850.jpg');
+        background-image: url(../assets/img/faqbg.jpg);
         span{
             background: black;
             color: white;
@@ -517,7 +517,7 @@ export default {
         }
     }
     .couponbg{
-        background-image: url('https://content.asos-media.com/-/media/homepages/unisex/homepages/2020/04_april/summer-promo/sticker/dt_hero_live_banner_summer-sticker_2_still.jpg');
+        background-image: url(../assets/img/couponbg.jpg);
     }
     .bottom{
         position: absolute;
@@ -586,9 +586,6 @@ export default {
         }
     }
     @media(max-width: 1366px){
-        // .img-height{
-        //     height: 200px;
-        // }
         .hint{
             display: block;
         }
@@ -603,11 +600,16 @@ export default {
             display: block;
         }
     }
-    @media(max-width: 767px){
-        // .img-height{
-        //     height: 175px;
-        // }
+    .test{
+        font-size: 2rem;
     }
+    .category-wrap{
+        height: 100vh;
+    }
+    .card{
+        height: 90%;
+    }
+
     @media(max-width: 414px){
         .font{
             font-size: 5vw;

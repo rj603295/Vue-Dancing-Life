@@ -274,7 +274,7 @@ export default {
             if(response.data.success){
               vm.$set(vm.tempProduct, 'imageUrl', response.data.imageUrl);
             }else{
-              this.$bus.$emit('message:push', 'response.data.message', 'danger');
+              this.$bus.$emit('message:push', '圖片為錯誤格式', 'danger');
             }
           }));
         },

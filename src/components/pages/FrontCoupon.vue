@@ -45,7 +45,7 @@ export default {
     .dancing{
         height: 100vh;
         opacity: 0.9;
-        background-image: url('https://images.unsplash.com/photo-1466554934129-f71df54ebb27?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
+        background-image: url(../../assets/img/front-coupon-bg.jpg);
     }
     .bg-lighter{
         background-color: rgba(255, 255, 255, 0.35);
