@@ -1,0 +1,67 @@
+.line-height{
+    line-height: 2;
+}
+.mark-yellow {
+    background: linear-gradient(transparent 40%,rgba(255,255,255,0) 40%, #FFF176 90%,transparent 95%);	
+    padding: 2px 1px;
+}
+.btn-color{
+  background: #f7c027;
+  color: black;
+  &:hover{
+    background: #d4a523;
+    color: white;
+  }
+}
+.btn-border{
+  border: 2px #f7c027 solid;
+  color: #d89e00;
+  &:hover{
+    border: 2px #d4a523 solid;
+    background: #d4a523;
+    color: black;
+  }
+}
+.pointer{
+  cursor: pointer;
+}
+.bg-cover{
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.animated{
+  opacity: 0;
+  transition: all 2s;
+  transform: translateY(10%);
+}
+.animated-left{
+  opacity: 0;
+  transition: all 2s;
+  transform: translateX(-30%);
+}
+.animated-right{
+  opacity: 0;
+  transition: all 2s;
+  transform: translateX(30%);
+}
+.big{
+  &:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
+  }
+}
+.fadeIn{
+  opacity: 1;
+  transform: translateY(0px);
+}
+.fadeInX{
+  opacity: 1;
+  transform: translateX(0px);
+}
+.sticky-footer{
+  bottom: 0;
+  left:0;
+  right:0;
+  position: absolute;
+}

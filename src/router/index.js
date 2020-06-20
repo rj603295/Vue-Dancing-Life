@@ -1,21 +1,21 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 // import HelloWorld from '@/components/HelloWorld';
-import Dashboard from '@/components/Dashboard';
-import Login from '@/components/pages/Login';
-import Products from '@/components/pages/Products';
-import CustomerOrder from '@/components/pages/CustomerOrders';
-import Coupon from '@/components/pages/Coupon';
-import CustomerList from '@/components/pages/CustomerList';
-import Home from '@/components/Home';
-import ProductDetail from '@/components/pages/ProductDetail';
-import Check from '@/components/pages/Check';
-import Setting from '@/components/Setting';
-import FrontCoupon from '@/components/pages/FrontCoupon';
-import Competition from '@/components/pages/Competition';
-import BuyInfo from '@/components/pages/BuyInfo';
-import AfterBuy from '@/components/pages/AfterBuy';
-import Contact from '@/components/pages/Contact';
+import Dashboard from '@/views/Dashboard';
+import Login from '@/views/backstage/Login';
+import Products from '@/views/backstage/Products';
+import CustomerOrder from '@/views/forestage/CustomerOrders';
+import Coupon from '@/views/backstage/Coupon';
+import CustomerList from '@/views/forestage/CustomerList';
+import Home from '@/views/forestage/Home';
+import ProductDetail from '@/views/forestage/ProductDetail';
+import Check from '@/views/forestage/Check';
+import Setting from '@/views/Setting';
+import FrontCoupon from '@/views/forestage/FrontCoupon';
+import Competition from '@/views/forestage/Competition';
+import BuyInfo from '@/views/forestage/BuyInfo';
+import AfterBuy from '@/views/forestage/AfterBuy';
+import Contact from '@/views/forestage/Contact';
 Vue.use(VueRouter);
 
 export default new VueRouter({

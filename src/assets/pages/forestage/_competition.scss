@@ -1,0 +1,41 @@
+.width-30{
+  width: 30%;
+}
+.jumbotron-bg{
+  background-position: center center;
+  background-size: cover;
+  background-image: url(~@/assets/img/jumbotron-bg.jpg)
+}
+.bg-lighter{
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.box-300{
+  height: 300px;
+}
+.btn-place{
+  position: absolute;
+  right:0;
+  bottom:0;
+  margin-right: 15px;
+}
+ol, ul {
+  list-style: none;
+}
+.competition-1{
+  background-image: url(~@/assets/img/competition-1.jpg)
+}
+.competition-2{
+  background-image: url(~@/assets/img/competition-2.jpg)
+}
+.competition-3{
+  background-image: url(~@/assets/img/competition-3.jpg)
+}
+.competition-4{
+  background-image: url(~@/assets/img/competition-4.jpg)
+}
+.competition-5{
+  background-image: url(~@/assets/img/competition-5.jpg)
+}
+.competition-6{
+  background-image: url(~@/assets/img/competition-6.jpg)
+}

@@ -1,0 +1,42 @@
+.card-wrap{
+  cursor: pointer;
+  &:hover .price-wrap{
+    display: block;
+  }
+}
+.height-width-350px{
+  height: 350px;
+  width: 350px;
+}
+.price-wrap{
+  position: absolute;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+.price-overlay{
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.price{
+  display: none;
+}
+.content{
+  min-height: 100vh;
+}
+@media(max-width: 1366px){
+  .price{
+    display:block;
+  }
+  .price-wrap{
+    display: none;
+  }
+  .card-wrap{
+    &:hover .price-wrap{
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+.p-responsive{
+  font-size: 1.4rem;
+  font-family: "微軟正黑體";
+}
+.height-100px{
+  height: 100px;
+}
+.fa-check-circle{
+  color: green;
+}
+.coupon-wrap{
+  border-color: #f7c027;
+}
+.coupon-wrap-button{
+  border: 1px #f7c027 solid;
+  color: #d89e00;
+  &:hover{
+    border: 2px #d4a523 solid;
+    background: #d4a523;
+    color: black;
+  }
+}
+.input-width{
+  width: 50%;
+}

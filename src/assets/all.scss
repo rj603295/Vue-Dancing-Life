@@ -1,4 +1,10 @@
 @import "~bootstrap/scss/functions";
 @import "./helpers/_variables";
 @import "~bootstrap/scss/bootstrap";
+@import "./_base";
+@import "./_tool";
 @import "./_dashboard";
+@import "./pages/_forestage";
+@import "./pages/_backstage";
+@import "./components/_cart";
+
