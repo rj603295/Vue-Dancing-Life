@@ -106,6 +106,9 @@ export default new Vuex.Store({
     },
     cart(state){
       return state.cart;
+    },
+    pagination(state){
+      return state.pagination;
     }
   }
 });

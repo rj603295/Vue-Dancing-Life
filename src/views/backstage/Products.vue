@@ -52,8 +52,8 @@
 						<div class="row">
 							<div class="col-sm-4">
 								<div class="form-group">
-									<label for="image">輸入圖片網址</label>
-									<input type="text" class="form-control" id="image"
+									<label for="imageUrl">輸入圖片網址</label>
+									<input type="text" class="form-control" id="imageUrl"
 										placeholder="請輸入圖片連結" v-model="tempProduct.imageUrl">
 								</div>
 								<div class="form-group">
@@ -167,19 +167,28 @@ export default {
 	},
 	data(){
 		return {
+			products: {},
 			tempProduct: {},
 			isNew: false,
 			isLoading: false,
-			pagination: {},
 			status: {
 				fileUploading: false,
-			}
+			},
+			pagination: {}
 		};
 	},
 	methods: {
-		getProducts(){
-			this.$store.dispatch('getProducts');
-		},
+		getProducts(page=1){
+      const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/admin/products?page=${page}`;
+      const vm = this;
+      vm.isLoading = true;
+      vm.$http.get(api).then((response) => {
+        console.log(response.data)
+        vm.isLoading = false;
+        vm.products = response.data.products;
+        vm.pagination = response.data.pagination;
+      });
+    },
 		openModal(isNew, item){
 			if(isNew){
 				this.tempProduct = {};
@@ -253,8 +262,8 @@ export default {
 	created(){
 		this.getProducts();
 	},
-	computed: {
-		...mapGetters(['products'])
-	}
+	// computed: {
+	// 	...mapGetters(['products'])
+	// }
 }
 </script>
